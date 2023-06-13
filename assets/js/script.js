@@ -40,7 +40,7 @@ function renderWeather(data) {
     var humidityEl = document.createElement('li');
     humidityEl.textContent = `Humidity: ${data[0].main.humidity} % `
     var windSpeedEl = document.createElement('li');
-   windSpeedEl.textContent = `Windspeed: ${data[0].wind.speed} MPH `
+    windSpeedEl.textContent = `Wind: ${data[0].wind.speed} MPH `
     weatherToday.append(tempEl, humidityEl, windSpeedEl);
 
 
@@ -72,8 +72,21 @@ function renderForecast(dailyForecast) {
             // Then filters through the data and returns only data captured at noon for each day.
             if (dailyForecast[i].dt_txt.slice(11, 13) == "12") {
                 //   forecastDiv(dailyForecast[i]);
-
+                var nextDayDiv = document.createElement('div');
+                var weatherIcon = document.createElement('i');
+                var nextDayInfo = document.createElement('ul');
+                var nextDayTemp = document.createElement('li');
+                var nextDayWind = document.createElement('li');
+                var nextDayHumid = document.createElement('li');
+                nextDayTemp.textContent = dailyForecast[i].main.temp;
+                nextDayWind.textContent = dailyForecast[i].wind.speed;
+                nextDayHumid.textContent = dailyForecast[i].main.humidity;
+                nextDayInfo.appendChild(nextDayTemp);nextDayInfo.appendChild(nextDayWind);nextDayInfo.appendChild(nextDayHumid);
+                nextDayDiv.appendChild(weatherIcon)
+                nextDayDiv.appendChild(nextDayInfo);
+                forecastDiv.appendChild(nextDayDiv);
             }
         }
     }
+    renderForecast(dailyForecast)
 }
