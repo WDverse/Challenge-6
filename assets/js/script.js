@@ -74,6 +74,10 @@ function renderForecast(dailyForecast) {
 
     for (var i = 0; i < dailyForecast.length; i++) {
         forecastHeader.setAttribute('style', 'display: block');
+        console.log(dailyForecast[i].dt)
+        const date = dayjs(dailyForecast[i].dt)
+        console.log(date)
+        date.format("DD/MM/YYYY");
 
         // First filters through all of the data and returns only data that falls between one day after the current data and up to 5 days later.
         if (dailyForecast[i].dt >= startDt && dailyForecast[i].dt < endDt) {
@@ -83,7 +87,7 @@ function renderForecast(dailyForecast) {
                 //   forecastDiv(dailyForecast[i]);
                 var nextDayDiv = document.createElement('div');
                 var futureDate = document.createElement('header');
-                futureDate.textContent = currentDay;
+                futureDate.textContent = date;
                 var weatherIcon = document.createElement('i');
                 var nextDayInfo = document.createElement('ul');
                 var nextDayTemp = document.createElement('li');
