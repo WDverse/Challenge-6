@@ -5,7 +5,8 @@ var forecastDiv = document.getElementById('5-day-forecast');
 var apiKey = 'd6e36cd62e6cfcf651eefb5f7aa8d3dd';
 var weatherToday = document.getElementById('weather-info');
 var forecastHeader = document.getElementById('forecast')
-// forecastHeader.setAttribute('style', 'display: none');
+var currentDay = dayjs().format('DD/MM/YYYY')
+forecastHeader.style.display = 'none';
 dayjs.extend(window.dayjs_plugin_utc);
 dayjs.extend(window.dayjs_plugin_timezone);
 
@@ -52,7 +53,7 @@ function renderWeather(data) {
 }
 
 function searchFormSubmit(event) {
-    forecastDiv.innerHTML = '';
+    forecastDiv.innerHTML = '5-Day Forecast';
     // console.log(event);
     event.preventDefault();
     var cityInput = inputEl.value.trim();
@@ -68,8 +69,9 @@ function renderForecast(dailyForecast) {
     // Create unix timestamps for start and end of 5 day forecast
     var startDt = dayjs().add(1, 'day').startOf('day').unix();
     var endDt = dayjs().add(6, 'day').startOf('day').unix();
-    // forecastHeader.setAttribute('style', 'display: block');
-    
+    forecastHeader.style.display = 'block';
+
+
     for (var i = 0; i < dailyForecast.length; i++) {
         forecastHeader.setAttribute('style', 'display: block');
 
@@ -80,20 +82,23 @@ function renderForecast(dailyForecast) {
             if (dailyForecast[i].dt_txt.slice(11, 13) == "12") {
                 //   forecastDiv(dailyForecast[i]);
                 var nextDayDiv = document.createElement('div');
+                var futureDate = document.createElement('header');
+                futureDate.textContent = currentDay;
                 var weatherIcon = document.createElement('i');
                 var nextDayInfo = document.createElement('ul');
                 var nextDayTemp = document.createElement('li');
                 var nextDayWind = document.createElement('li');
                 var nextDayHumid = document.createElement('li');
                 nextDayTemp.textContent = "Temp: " + dailyForecast[i].main.temp;
-                nextDayWind.textContent = "Wind: " + dailyForecast[i].wind.speed;
-                nextDayHumid.textContent = "Humidity: "+ dailyForecast[i].main.humidity;
+                nextDayWind.textContent = "Wind: " + dailyForecast[i].wind.speed + "MPH";
+                nextDayHumid.textContent = "Humidity: " + dailyForecast[i].main.humidity + "%";
                 nextDayInfo.appendChild(nextDayTemp); nextDayInfo.appendChild(nextDayWind); nextDayInfo.appendChild(nextDayHumid);
-                nextDayDiv.appendChild(weatherIcon)
+                nextDayDiv.appendChild(futureDate);
+                nextDayDiv.appendChild(weatherIcon);
                 nextDayDiv.appendChild(nextDayInfo);
-               forecastDiv.appendChild(nextDayDiv);
+                forecastDiv.appendChild(nextDayDiv);
             }
         }
     }
- 
+
 }
