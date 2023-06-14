@@ -44,7 +44,7 @@ function renderWeather(data) {
     var tempEl = document.createElement('li');
     tempEl.textContent = `Temp: ${data[0].main.temp} `
     var humidityEl = document.createElement('li');
-    humidityEl.textContent = `Humidity: ${data[0].main.humidity} % `
+    humidityEl.textContent = `Humidity: ${data[0].main.humidity}% `
     var windSpeedEl = document.createElement('li');
     windSpeedEl.textContent = `Wind: ${data[0].wind.speed} MPH `
     weatherToday.append(tempEl, humidityEl, windSpeedEl);
@@ -75,7 +75,7 @@ function renderForecast(dailyForecast) {
     for (var i = 0; i < dailyForecast.length; i++) {
         forecastHeader.setAttribute('style', 'display: block');
         console.log(dailyForecast[i].dt)
-        const date = dayjs(dailyForecast[i].dt)
+        const date = dayjs(dailyForecast[i].dt * 1000)
         console.log(date)
         date.format("DD/MM/YYYY");
 
@@ -87,14 +87,15 @@ function renderForecast(dailyForecast) {
                 //   forecastDiv(dailyForecast[i]);
                 var nextDayDiv = document.createElement('div');
                 var futureDate = document.createElement('header');
-                futureDate.textContent = date;
+                futureDate.textContent = date.format("DD/MM/YYYY");
                 var weatherIcon = document.createElement('i');
                 var nextDayInfo = document.createElement('ul');
                 var nextDayTemp = document.createElement('li');
                 var nextDayWind = document.createElement('li');
                 var nextDayHumid = document.createElement('li');
+                
                 nextDayTemp.textContent = "Temp: " + dailyForecast[i].main.temp;
-                nextDayWind.textContent = "Wind: " + dailyForecast[i].wind.speed + "MPH";
+                nextDayWind.textContent = "Wind: " + dailyForecast[i].wind.speed + " MPH";
                 nextDayHumid.textContent = "Humidity: " + dailyForecast[i].main.humidity + "%";
                 nextDayInfo.appendChild(nextDayTemp); nextDayInfo.appendChild(nextDayWind); nextDayInfo.appendChild(nextDayHumid);
                 nextDayDiv.appendChild(futureDate);
