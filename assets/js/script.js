@@ -43,9 +43,10 @@ function getCoords(city) {
 function renderWeather(data) {
     weatherToday.innerHTML = '';
     var currentIcon = document.createElement('img');
-    currentIcon.src = "https:" +`${data[0].weather[0].icon}`
+    currentIcon.src = `https://openweathermap.org/img/wn/${data[0].weather[0].icon}@2x.png`
     console.log('icon: ', `${data[0].weather[0].icon}` );
-    currentDayEl.textContent = currentDay + " " + inputEl.value + currentIcon ;
+    currentDayEl.textContent = currentDay + " " + inputEl.value.trim();
+    currentDayEl.append(currentIcon);
     var tempEl = document.createElement('li');
     tempEl.textContent = `Temp: ${data[0].main.temp} `
     var humidityEl = document.createElement('li');
