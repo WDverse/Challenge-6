@@ -1,7 +1,7 @@
 var inputEl = document.getElementById('search-city');
 var searchBtn = document.getElementById('search-btn');
 var todayDiv = document.getElementById('weather-today');
-var forecastDiv = document.getElementById('5-day-forecast');
+var forecastDiv = document.getElementById('five-day-forecast');
 var apiKey = 'd6e36cd62e6cfcf651eefb5f7aa8d3dd';
 var weatherToday = document.getElementById('weather-info');
 var forecastHeader = document.getElementById('forecast')
@@ -42,11 +42,11 @@ function getCoords(city) {
 
 function renderWeather(data) {
     weatherToday.innerHTML = '';
-    var currentIcon = document.createElement('img');
+    currentDayEl.textContent = inputEl.value.trim() + " " + currentDay;
+    var currentIcon = document.getElementById('current-icon');
     currentIcon.src = `https://openweathermap.org/img/wn/${data[0].weather[0].icon}@2x.png`
-    console.log('icon: ', `${data[0].weather[0].icon}` );
-    currentDayEl.textContent = currentDay + " " + inputEl.value.trim();
-    currentDayEl.append(currentIcon);
+    console.log('icon: ', `${data[0].weather[0].icon}`);
+    todayDiv.append(currentIcon);
     var tempEl = document.createElement('li');
     tempEl.textContent = `Temp: ${data[0].main.temp} `
     var humidityEl = document.createElement('li');
@@ -95,6 +95,7 @@ function renderForecast(dailyForecast) {
                 var futureDate = document.createElement('header');
                 futureDate.textContent = date.format("DD/MM/YYYY");
                 var forecastIcon = document.createElement('img');
+                forecastIcon.src = `https://openweathermap.org/img/wn/${dailyForecast[i].weather[0].icon}@2x.png`
                 var nextDayInfo = document.createElement('ul');
                 var nextDayTemp = document.createElement('li');
                 var nextDayWind = document.createElement('li');

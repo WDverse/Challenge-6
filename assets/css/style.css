@@ -1,0 +1,10 @@
+
+#five-day-forecast {
+    display: flex;
+    margin: auto;
+}
+
+
+li {
+    list-style-type: none;
+}
