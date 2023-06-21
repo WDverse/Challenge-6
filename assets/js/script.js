@@ -6,6 +6,7 @@ var apiKey = 'd6e36cd62e6cfcf651eefb5f7aa8d3dd';
 var weatherToday = document.getElementById('weather-info');
 var forecastHeader = document.getElementById('forecast')
 var currentDay = dayjs().format('DD/MM/YYYY')
+var currentDayEl = document.getElementById('current-day');
 forecastHeader.style.display = 'none';
 dayjs.extend(window.dayjs_plugin_utc);
 dayjs.extend(window.dayjs_plugin_timezone);
@@ -41,6 +42,10 @@ function getCoords(city) {
 
 function renderWeather(data) {
     weatherToday.innerHTML = '';
+    var currentIcon = document.createElement('img');
+    currentIcon.src = "https:" +`${data[0].weather[0].icon}`
+    console.log('icon: ', `${data[0].weather[0].icon}` );
+    currentDayEl.textContent = currentDay + " " + inputEl.value + currentIcon ;
     var tempEl = document.createElement('li');
     tempEl.textContent = `Temp: ${data[0].main.temp} `
     var humidityEl = document.createElement('li');
@@ -88,18 +93,20 @@ function renderForecast(dailyForecast) {
                 var nextDayDiv = document.createElement('div');
                 var futureDate = document.createElement('header');
                 futureDate.textContent = date.format("DD/MM/YYYY");
-                var weatherIcon = document.createElement('i');
+                var forecastIcon = document.createElement('img');
                 var nextDayInfo = document.createElement('ul');
                 var nextDayTemp = document.createElement('li');
                 var nextDayWind = document.createElement('li');
                 var nextDayHumid = document.createElement('li');
-                
+
                 nextDayTemp.textContent = "Temp: " + dailyForecast[i].main.temp;
                 nextDayWind.textContent = "Wind: " + dailyForecast[i].wind.speed + " MPH";
                 nextDayHumid.textContent = "Humidity: " + dailyForecast[i].main.humidity + "%";
-                nextDayInfo.appendChild(nextDayTemp); nextDayInfo.appendChild(nextDayWind); nextDayInfo.appendChild(nextDayHumid);
+                nextDayInfo.appendChild(nextDayTemp);
+                nextDayInfo.appendChild(nextDayWind);
+                nextDayInfo.appendChild(nextDayHumid);
                 nextDayDiv.appendChild(futureDate);
-                nextDayDiv.appendChild(weatherIcon);
+                nextDayDiv.appendChild(forecastIcon);
                 nextDayDiv.appendChild(nextDayInfo);
                 forecastDiv.appendChild(nextDayDiv);
             }
