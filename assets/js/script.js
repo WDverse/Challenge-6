@@ -12,7 +12,7 @@ dayjs.extend(window.dayjs_plugin_utc);
 dayjs.extend(window.dayjs_plugin_timezone);
 
 function getApi(lat, lon) {
-    var requestUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`
+    var requestUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`
 
     fetch(requestUrl)
         .then(function (response) {
@@ -46,7 +46,7 @@ function renderWeather(data) {
     var currentIcon = document.getElementById('current-icon');
     currentIcon.src = `https://openweathermap.org/img/wn/${data[0].weather[0].icon}@2x.png`
     console.log('icon: ', `${data[0].weather[0].icon}`);
-    todayDiv.append(currentIcon);
+    currentDayEl.append(currentIcon);
     var tempEl = document.createElement('li');
     tempEl.textContent = `Temp: ${data[0].main.temp} `
     var humidityEl = document.createElement('li');
