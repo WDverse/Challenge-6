@@ -24,6 +24,10 @@ p {
   padding-top: 20px;
 }
 
+.searchBar{
+  width: 15%!important;
+}
+
 /* Styling for buttons */
 button {
   margin-top: 5px !important;
