@@ -5,34 +5,47 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather Dashboard</title>
+    <!-- Include a custom stylesheet -->
     <link rel="stylesheet" href="./assets/css/style.css" />
+    <!-- Include Bootstrap CSS from a CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 
 <body>
-    <header>Weather Dashboard</header>
+    <!-- Header section -->
+    <header class="mainHeader">Weather Dashboard</header>
 
     <main>
         <div>
-            <header>Search for a City:</header>
+            <!-- Paragraph for search instructions -->
+            <p class="searchPara">Search for a City:</p>
+            <!-- Form for city search -->
             <form>
-                <input id="search-city"></input>
+                <!-- Input field for city name -->
+                <input id="search-city" placeholder="Enter city name..."></input>
             </form>
-            <button id="search-btn">Search</button>
+            <!-- Button for triggering the search -->
+            <button type="button" id="search-btn" class="btn btn-dark button">Search</button>
         </div>
+        <!-- Display search history -->
         <div id="search-history"></div>
 
-        <div id="weather-today">
+        <!-- Current weather information -->
+        <div id="todayDiv">
+            <!-- Header for current day -->
             <header id="current-day"></header>
+            <!-- Image for current weather icon -->
             <img id="current-icon">
+            <!-- List for weather information -->
             <ul id="weather-info"></ul>
-
         </div>
 
-        <div id="five-day-forecast">
-            <header id="forecast">5-Day Forecast</header>
-
-        </div>
+        <!-- Header for 5-day forecast -->
+        <header id="forecast">5-Day Forecast:</header>
+        <!-- Container for the 5-day forecast -->
+        <div id="five-day-forecast"></div>
     </main>
+    <!-- Include Day.js and its plugins -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.4/dayjs.min.js"
         integrity="sha512-0fcCRl828lBlrSCa8QJY51mtNqTcHxabaXVLPgw/jPA5Nutujh6CbTdDgRzl9aSPYW/uuE7c4SffFUQFBAy6lg=="
         crossorigin="anonymous"></script>
@@ -43,7 +56,10 @@
         integrity="sha512-pslqxxHAYPCxaSeFSmXXxDkLejD5dbFVC66aiVq0z4v7VTJBU+wqcG1OpNh4p3MjS2D6NCwz/H2QmSc7dXxryg=="
         crossorigin="anonymous"></script>
 
+    <!-- Include custom JavaScript -->
     <script src="./assets/js/script.js"></script>
+    <!-- Include Bootstrap JavaScript from a CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 
 </html>

@@ -1,10 +1,124 @@
-
-#five-day-forecast {
-    display: flex;
-    margin: auto;
+/* Reset margin for the entire body element */
+body {
+  margin: 0;
 }
 
+/* Styling for the main header */
+.mainHeader {
+  text-align: center;
+  font-size: 40px;
+  background-color: #02394a;
+  color: white;
+}
 
+/* Margin settings for input, paragraphs, and buttons with important overrides */
+input,
+p,
+button {
+  margin-left: 200px !important;
+}
+
+/* Styling for paragraphs */
+p {
+  font-weight: bold;
+  padding-top: 20px;
+}
+
+/* Styling for buttons */
+button {
+  margin-top: 5px !important;
+  background-color: #02394a !important;
+  border: none !important;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: none;
+}
+
+/* Hover effect for buttons */
+button:hover {
+  background-color: #045d79 !important;
+}
+
+/* Active state for buttons */
+button:active {
+  background-color: #04779a !important;
+}
+
+/* Styling for the current-day header */
+#current-day {
+  position: absolute;
+  font-size: 20px;
+  font-weight: bold;
+  bottom: 100px;
+  left: 15px;
+}
+
+/* Styling for the current weather icon */
+#current-icon {
+  position: absolute;
+  top: 1px;
+  bottom: 10px;
+  right: 20px;
+}
+
+/* Styling for the todayDiv container */
+#todayDiv {
+  position: relative;
+  display: flex;
+  border: solid 2px;
+  border-radius: 5px;
+  text-align: center;
+  width: 35%;
+  margin-left: 600px;
+  margin-bottom: 50px;
+  background-color: #e6f0f3;
+  color: black;
+  line-height: 50px;
+}
+
+/* Styling for images within the document */
+img {
+  margin-top: 40px;
+  margin-right: 30px;
+}
+
+/* Styling for the 5-day forecast header */
+#forecast {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Styling for futureDate headers */
+.futureDate {
+  margin-left: 10px;
+  font-weight: bold;
+}
+
+/* Styling for the nextDay container */
+.nextDay {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  border: solid 2px;
+  border-radius: 5px;
+  margin: 20px;
+  text-align: center;
+  width: fit-content;
+  background-color: #02394a;
+  color: white;
+  line-height: 50px;
+}
+
+/* Styling for the five-day forecast container */
+#five-day-forecast {
+  display: flex;
+}
+
+/* Styling for list items */
 li {
-    list-style-type: none;
+  list-style-type: none;
+  text-align: center;
+  margin-left: 28px;
 }
